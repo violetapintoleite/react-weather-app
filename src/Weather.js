@@ -1,49 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./Weather.css";
 
 export default function Weather() {
-  return (
-    <div className="Weather">
-      <form>
+  const [ready, setReady] = useState(false);
+  const [weatherData, setWeatherData] = useState({});
+  function handleResponse(response) {
+    console.log(response.data);
+    setWeatherData({
+      temperature: Math.round(response.data.main.temp),
+      wind: response.data.wind.speed,
+      humidity: response.data.main.humidity,
+      description: response.data.weather[0].description,
+      iconUrl: "",
+      city: response.data.name
+    });
+    setReady(true);
+  }
+
+  if (ready) {
+    return (
+      <div className="Weather">
+        <form>
+          <div className="row">
+            <div className="col-9">
+              <input
+                type="search"
+                placeholder="Type a city name"
+                className="form-control"
+                autoFocus="on"
+              />
+            </div>
+            <div className="col-3">
+              <input
+                type="submit"
+                value="Search"
+                className="btn btn-primary w-100"
+              />
+            </div>
+          </div>
+        </form>
+        <h1>{weatherData.city}</h1>
+        <ul>
+          <li>Thursday, 10:36</li>
+          <li>Sunny</li>
+        </ul>
         <div className="row">
-          <div className="col-9">
-            <input
-              type="search"
-              placeholder="Type a city name"
-              className="form-control"
-              autoFocus="on"
-            />
+          <div className="col-6">
+            <img scr={weatherData.iconUrl} alt={weatherData.description} />
+            <span className="temperature">{weatherData.temperature}º</span>
           </div>
-          <div className="col-3">
-            <input
-              type="submit"
-              value="Search"
-              className="btn btn-primary w-100"
-            />
+          <div className="col-6">
+            <ul>
+              <li>Wind {weatherData.wind} km/h</li>
+              <li>Humidity {weatherData.humidity}%</li>
+              <li>Precipitation 2%</li>
+            </ul>
           </div>
-        </div>
-      </form>
-      <h1>Lisbon</h1>
-      <ul>
-        <li>Thursday, 10:36</li>
-        <li>Sunny</li>
-      </ul>
-      <div className="row">
-        <div className="col-6">
-          <img
-            href="https://lh3.googleusercontent.com/proxy/dCY-qF35BTXz4bXoUxgA_z61eOv36E3B-J5gy6I66SU0nyJZGXS_1UTr1EoPhwsuRHnqMulrnFfJBvnnyGPOEnHdsItCyGGHwdS-a0Y1qBelPUVS"
-            alt="sunny"
-          />
-          <span className="temperature">20º</span>
-        </div>
-        <div className="col-6">
-          <ul>
-            <li>Wind 5klm/h</li>
-            <li>Humidity 20%</li>
-            <li>Precipitation 2%</li>
-          </ul>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    const apiKey = "faaa64851f48ba4c965c94b3a847efa5";
+    let city = "Lisbon";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+
+    return "Loading...";
+  }
 }
