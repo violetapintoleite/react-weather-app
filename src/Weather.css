@@ -1,6 +1,6 @@
 .Weather {
   border: 1px solid #dadde1;
-  background-image: linear-gradient(#475e94 0%, #86b5db 100%);
+  background-image: linear-gradient(#3b4e7a 0%, #57a2b4 100%);
   color: white;
   padding: 16px;
   margin: 30px auto;
@@ -16,10 +16,12 @@
   font-weight: 300;
   line-height: 29px;
   margin: 20px 0 5px 0;
+  text-transform: capitalize;
+  letter-spacing: 5px;
 }
 
 .Weather ul {
-  line-height: 1;
+  line-height: 20px;
   font-size: 15px;
   font-weight: 300;
   margin-bottom: 30px;
@@ -29,8 +31,12 @@
 }
 
 .Weather .temperature {
-  font-weight: bold;
-  font-size: 64px;
+  font-weight: 600px;
+  color: rgb(255, 255, 255);
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 70px;
+  letter-spacing: 5px;
 }
 
 .Weather img {
