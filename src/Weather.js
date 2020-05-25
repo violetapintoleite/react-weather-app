@@ -23,7 +23,7 @@ export default function Weather(props) {
 
   function search() {
     const apiKey = "faaa64851f48ba4c965c94b3a847efa5";
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
 
@@ -49,6 +49,7 @@ export default function Weather(props) {
                 autoFocus="on"
                 onChange={handleChange}
               />
+              <div className="col-3"></div>
             </div>
           </div>
         </form>
