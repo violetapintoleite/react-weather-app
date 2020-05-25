@@ -1,0 +1,51 @@
+.description {
+  color: white;
+  text-transform: capitalize;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.temperature {
+  margin-left: 20px;
+  margin-top: -30px;
+}
+
+.icon {
+  margin-left: 10px;
+}
+
+ul {
+  color: white;
+  line-height: 20px;
+  font-size: 15px;
+  font-weight: 300;
+  margin-bottom: 30px;
+  margin-top: -5px;
+  padding-left: 3px;
+  list-style: none;
+}
+.moreInfo {
+  color: rgb(167, 196, 212);
+  font-size: 22px;
+}
+
+h1 {
+  color: white;
+  font-weight: 600;
+  line-height: 50px;
+  margin: 20px 0 5px 0;
+  text-transform: capitalize;
+  letter-spacing: 5px;
+}
+
+.temperature {
+  color: rgb(255, 255, 255);
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 70px;
+  letter-spacing: 5px;
+}
+
+img {
+  margin-right: 10px;
+}
